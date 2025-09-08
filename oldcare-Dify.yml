@@ -1,0 +1,595 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: chat
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/deepseek:0.0.6@dd589dc093c8084925858034ab5ec1fdf0d33819f43226c2f8c4a749a9acbbb2
+kind: app
+version: 0.3.1
+workflow:
+  conversation_variables:
+  - description: ''
+    id: b773348e-ffc9-4885-944c-fcadd0a25c69
+    name: text_out
+    selector:
+    - conversation
+    - text_out
+    value: ''
+    value_type: string
+  - description: ''
+    id: 4fe92e9f-5f30-49eb-a6de-c4c60d4c1bf8
+    name: last_topics
+    selector:
+    - conversation
+    - last_topics
+    value: ''
+    value_type: string
+  - description: ''
+    id: 8d8a2a11-5500-4dc2-b762-9147dd809b49
+    name: user_info
+    selector:
+    - conversation
+    - user_info
+    value: ''
+    value_type: string
+  - description: ''
+    id: 5cb50b33-771f-4e04-b93e-1940a422503d
+    name: text
+    selector:
+    - conversation
+    - text
+    value: ''
+    value_type: string
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - audio
+      allowed_file_upload_methods:
+      - remote_url
+      - local_file
+      enabled: true
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: tool
+      id: 1755870479444-source-1756348398620-target
+      selected: false
+      source: '1755870479444'
+      sourceHandle: source
+      target: '1756348398620'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: answer
+      id: 1756348430877-source-1756355978113-target
+      selected: false
+      source: '1756348430877'
+      sourceHandle: source
+      target: '1756355978113'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: assigner
+      id: 1756348398620-source-1756360471203-target
+      selected: false
+      source: '1756348398620'
+      sourceHandle: source
+      target: '1756360471203'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: assigner
+        targetType: llm
+      id: 1756360471203-source-1756348406893-target
+      selected: false
+      source: '1756360471203'
+      sourceHandle: source
+      target: '1756348406893'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: parameter-extractor
+      id: 1756348406893-source-1756361895641-target
+      selected: false
+      source: '1756348406893'
+      sourceHandle: source
+      target: '1756361895641'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: parameter-extractor
+        targetType: tool
+      id: 1756361895641-source-1756348430877-target
+      selected: false
+      source: '1756361895641'
+      sourceHandle: source
+      target: '1756348430877'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: assigner
+      id: 1755870479444-source-1756453769587-target
+      source: '1755870479444'
+      sourceHandle: source
+      target: '1756453769587'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: assigner
+        targetType: llm
+      id: 1756453769587-source-1756348406893-target
+      source: '1756453769587'
+      sourceHandle: source
+      target: '1756348406893'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 53
+      id: '1755870479444'
+      position:
+        x: 30
+        y: 298
+      positionAbsolute:
+        x: 30
+        y: 298
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The audio file to be converted.
+            ja_JP: The audio file to be converted.
+            pt_BR: The audio file to be converted.
+            zh_Hans: 要转换的音频文件。
+          label:
+            en_US: Audio File
+            ja_JP: Audio File
+            pt_BR: Audio File
+            zh_Hans: 音频文件
+          llm_description: The audio file to be converted.
+          max: null
+          min: null
+          name: audio_file
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: file
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: All available ASR models. You can config model in the Model Provider
+              of Settings.
+            ja_JP: All available ASR models. You can config model in the Model Provider
+              of Settings.
+            pt_BR: All available ASR models. You can config model in the Model Provider
+              of Settings.
+            zh_Hans: 所有可用的 ASR 模型。你可以在设置中的模型供应商里配置。
+          label:
+            en_US: Model
+            ja_JP: Model
+            pt_BR: Model
+            zh_Hans: Model
+          llm_description: null
+          max: null
+          min: null
+          name: model
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: select
+        params:
+          audio_file: ''
+          model: ''
+        provider_id: audio
+        provider_name: audio
+        provider_type: builtin
+        selected: false
+        title: Speech To Text
+        tool_configurations:
+          model:
+            type: constant
+            value: langgenius/siliconflow/siliconflow#FunAudioLLM/SenseVoiceSmall
+        tool_description: 将音频文件转换为文本。
+        tool_label: Speech To Text
+        tool_name: asr
+        tool_node_version: '2'
+        tool_parameters:
+          audio_file:
+            type: variable
+            value:
+            - sys
+            - files
+        type: tool
+      height: 89
+      id: '1756348398620'
+      position:
+        x: 334
+        y: 298
+      positionAbsolute:
+        x: 334
+        y: 298
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: deepseek-chat
+          provider: langgenius/deepseek/deepseek
+        prompt_config:
+          jinja2_variables:
+          - value_selector:
+            - conversation
+            - text
+            value_type: string
+            variable: text
+          - value_selector:
+            - conversation
+            - last_topics
+            value_type: string
+            variable: last_topics
+        prompt_template:
+        - edition_type: basic
+          id: ef0754d7-0bbf-40b5-84b9-73ff56ed8b00
+          role: system
+          text: "你是\"小伴\"，一个陪老人聊天的贴心娃。用最亲切自然的方式和爷爷奶奶说话，每句话都要短而温暖。\n\n当前对话：\n用户：{{#conversation.text#}}\n\
+            聊天历史：{{#conversation.last_topics#}}\n\n\n记住这些说话要领：\n1. 句子要短，一句一说\n2. 多问问吃喝睡，身体怎么样\n\
+            3. 顺着老人的话聊，别打断\n4. 重要的事说两遍\n5. 用\"咱们\"代替\"你\"，用\"呗\"代替\"吧\"\n\n\n# 输出要求\n\
+            请严格按照以下JSON格式输出，不要有任何额外文本：\n{\n  \"reply\": \"你的回复（要像亲孙子/孙女一样说话，用'您老''爷爷/奶奶'等称呼）\"\
+            ,\n  \"next_question\": \"提出1个自然的相关问题（如果果判断对方不再继续想聊下去就不再提问而是换成结束语）\",\n\
+            \  \"remember\": [\"需要记住的1-2个关键信息\"],\n  \"mood\": \"分析老人情绪状态\"\n}\n\n\
+            现在开始回复下面的老人说话："
+        - edition_type: jinja2
+          id: 52161c66-b26e-4384-a8f0-53e1646091ec
+          role: user
+          text: '
+
+            用户输入: {text}'
+        selected: false
+        structured_output_enabled: false
+        title: 输入理解
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1756348406893'
+      position:
+        x: 942
+        y: 298
+      positionAbsolute:
+        x: 942
+        y: 298
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The text to be converted.
+            ja_JP: The text to be converted.
+            pt_BR: The text to be converted.
+            zh_Hans: 要转换的文本。
+          label:
+            en_US: Text
+            ja_JP: Text
+            pt_BR: Text
+            zh_Hans: 文本
+          llm_description: The text to be converted.
+          max: null
+          min: null
+          name: text
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: All available TTS models. You can config model in the Model Provider
+              of Settings.
+            ja_JP: All available TTS models. You can config model in the Model Provider
+              of Settings.
+            pt_BR: All available TTS models. You can config model in the Model Provider
+              of Settings.
+            zh_Hans: 所有可用的 TTS 模型。你可以在设置中的模型供应商里配置。
+          label:
+            en_US: Model
+            ja_JP: Model
+            pt_BR: Model
+            zh_Hans: Model
+          llm_description: null
+          max: null
+          min: null
+          name: model
+          options: []
+          placeholder:
+            en_US: Select a model
+            ja_JP: Select a model
+            pt_BR: Select a model
+            zh_Hans: 选择模型
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: select
+        params:
+          model: ''
+          text: ''
+        provider_id: audio
+        provider_name: audio
+        provider_type: builtin
+        selected: false
+        title: Text To Speech
+        tool_configurations:
+          model:
+            type: constant
+            value: langgenius/siliconflow/siliconflow#FunAudioLLM/CosyVoice2-0.5B
+          voice#langgenius/siliconflow/siliconflow#FunAudioLLM/CosyVoice2-0.5B:
+            type: constant
+            value: FunAudioLLM/CosyVoice2-0.5B:diana
+        tool_description: 将文本转换为音频文件。
+        tool_label: Text To Speech
+        tool_name: tts
+        tool_node_version: '2'
+        tool_parameters:
+          text:
+            type: mixed
+            value: '{{#1756361895641.reply#}} .. {{#1756361895641.next#}}'
+        type: tool
+      height: 115
+      id: '1756348430877'
+      position:
+        x: 1550.3505317694633
+        y: 298
+      positionAbsolute:
+        x: 1550.3505317694633
+        y: 298
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1756348430877.files#}}；
+
+
+          用户：{{#1756348398620.text#}}；
+
+          小伴：{{#1756361895641.reply#}}；{{#1756361895641.next#}}；
+
+
+          记忆：{{#1756361895641.remember#}}-心情：{{#1756361895641.wood#}}；'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 196
+      id: '1756355978113'
+      position:
+        x: 1854
+        y: 298
+      positionAbsolute:
+        x: 1854
+        y: 298
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1756348398620'
+          - text
+          variable_selector:
+          - conversation
+          - text
+          write_mode: over-write
+        selected: false
+        title: 变量赋值
+        type: assigner
+        version: '2'
+      height: 85
+      id: '1756360471203'
+      position:
+        x: 638
+        y: 298
+      positionAbsolute:
+        x: 638
+        y: 298
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        instruction: 帮我将test文段中汉字文本参数提取出来
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-chat
+          provider: langgenius/deepseek/deepseek
+        parameters:
+        - description: text文段中的reply汉字文段
+          name: reply
+          required: false
+          type: string
+        - description: text中的nextqu 汉字文段
+          name: next
+          required: false
+          type: string
+        - description: text中的remember汉字文段
+          name: remember
+          required: false
+          type: string
+        - description: text中的wood汉字文段
+          name: wood
+          required: false
+          type: string
+        query:
+        - '1756348406893'
+        - text
+        reasoning_mode: prompt
+        selected: false
+        title: 参数提取器
+        type: parameter-extractor
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1756361895641'
+      position:
+        x: 1246
+        y: 298
+      positionAbsolute:
+        x: 1246
+        y: 298
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - sys
+          - query
+          variable_selector:
+          - conversation
+          - last_topics
+          write_mode: over-write
+        selected: false
+        title: 变量赋值 2
+        type: assigner
+        version: '2'
+      height: 85
+      id: '1756453769587'
+      position:
+        x: 442.28571428571433
+        y: 83.43692256426971
+      positionAbsolute:
+        x: 442.28571428571433
+        y: 83.43692256426971
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 78.59768854515892
+      y: 193.20071811488674
+      zoom: 0.6093853975717476
